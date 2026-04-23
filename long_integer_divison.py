@@ -37,12 +37,13 @@
 #         return -1
 #     elif a >0 and b > 0:
 #         return 1
+import argparse
 
-def compute(a, b):
+def long_div(a, b):
     if b == 0:
         raise ValueError("Division by zero is undefined")
 
-    # Python already gives quotient and remainder
+    # get divisor and 
     q = a // b
     r = a % b
 
@@ -57,4 +58,12 @@ def compute(a, b):
     assert a == q*b+r
     return q, r
 
-print(f"{compute(-1687,11)}")
+parser = argparse.ArgumentParser(description="Compute quotient and remainder")
+parser.add_argument("a", type=int, help="Dividend")
+parser.add_argument("b", type=int, help="Divisor")
+args = parser.parse_args()
+q, r = long_div(args.a, args.b)
+print(f"q = {q}, r = {r}")
+print(f"{args.a} = {q} * {args.b} + {r}")
+
+## run python3 long_integer_divison.py  a b
