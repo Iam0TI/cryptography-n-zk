@@ -1,3 +1,19 @@
+# Require:, k ↑Z, j ↑N0 and n0, . . . , nk→1 ↑N coprime
+# procedure CONGRUENCE-SYSTEMS-SOLVER(a0, . . . , ak→1)
+# N ≃n0·
+# . . .
+# ·nk→1
+# while j < k do
+# Nj ≃N/n j
+# (_, s j,t j) ≃EXT→EUCLID(Nj, n j) end while
+# x↓≃!k→1
+# j=0 a j·s j·Nj
+# x ≃x↓ mod N
+# return {x + m·N |m ↑Z}
+# end procedure
+# Ensure: {x + m·N |m ↑Z}is the complete solution set to 3.19.
+
+
 import argparse
 from extended_euclidean import extended_euclidean
 
