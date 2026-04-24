@@ -57,13 +57,13 @@ def long_div(a, b):
             r -= b
     assert a == q*b+r
     return q, r
-
-parser = argparse.ArgumentParser(description="Compute quotient and remainder")
-parser.add_argument("a", type=int, help="Dividend")
-parser.add_argument("b", type=int, help="Divisor")
-args = parser.parse_args()
-q, r = long_div(args.a, args.b)
-print(f"q = {q}, r = {r}")
-print(f"{args.a} = {q} * {args.b} + {r}")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Compute quotient and remainder")
+    parser.add_argument("a", type=int, help="Dividend")
+    parser.add_argument("b", type=int, help="Divisor")
+    args = parser.parse_args()
+    q, r = long_div(args.a, args.b)
+    print(f"q = {q}, r = {r}")
+    print(f"{args.a} = {q} * {args.b} + {r}")
 
 ## run python3 long_integer_divison.py  a b

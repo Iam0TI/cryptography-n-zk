@@ -12,9 +12,9 @@ def to_binary(n):
         n = n // 2
     arr.reverse()  # Reverse to get MSB-first
     return ''.join(map(str, arr))
-
-parser = argparse.ArgumentParser(description="Compute binary")
-parser.add_argument("a", type=int, help="number")
-args = parser.parse_args()
-q = to_binary(args.a)
-print(f"{args.a} = {q} in binary")
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Compute binary")
+    parser.add_argument("a", type=int, help="number")
+    args = parser.parse_args()
+    q = to_binary(args.a)
+    print(f"{args.a} = {q} in binary")
