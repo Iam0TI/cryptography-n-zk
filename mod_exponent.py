@@ -1,12 +1,15 @@
 # Write a computer program to calculate a^x (mod n) by the method of repeated squares.
 # What are the largest values of n and x that your program will accept?
+
 import argparse
 from get_bin_sum import get_bin_sum
 
 def mod_exp(a,x,n) -> int:
+    #conver to bin and get the sum of power
     pow_of_2 = get_bin_sum(x)
     arr= [] 
     inner = 0
+    ## get the relevant of a **(2** i) mod(n)
     for i in range(0,max(pow_of_2)+1):
         if i == 0 :
             inner =a **(2**0)
@@ -14,6 +17,7 @@ def mod_exp(a,x,n) -> int:
             inner = mod_mul(inner,inner, n)
         if i in pow_of_2:
             arr.append(inner)
+    ## compute for a **(2** i) mod(n) to get  a **x mod(n)
     return mod_mul_from_list(arr,n)
 
 def mod_mul(a,b,n) -> int:
