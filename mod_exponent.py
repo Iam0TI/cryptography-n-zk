@@ -5,30 +5,33 @@ import argparse
 from get_bin_sum import get_bin_sum
 
 def mod_exp(a,x,n) -> int:
+    if n <= 0:
+        raise ValueError("modulus n must be positive")
+    if x < 0:
+        raise ValueError("exponent x must be non-negative")
+    if x == 0:
+        return 1 % n
     #conver to bin and get the sum of power
     pow_of_2 = get_bin_sum(x)
     arr= [] 
-    inner = 0
+    inner = a % n
     ## get the relevant of a **(2** i) mod(n)
     for i in range(0,max(pow_of_2)+1):
-        if i == 0 :
-            inner =a **(2**0)
-        else :
+        if i > 0 :
             inner = mod_mul(inner,inner, n)
         if i in pow_of_2:
             arr.append(inner)
     ## compute for a **(2** i) mod(n) to get  a **x mod(n)
     return mod_mul_from_list(arr,n)
 
-def mod_mul(a,b,n) -> int:
-    return (a*b)%n
+def mod_mul(a, b, n) -> int:
+    return (a * b) % n
 
-def mod_mul_from_list(an,n) -> int:
-    result = an[0]
-    for next_val in an[1:]:
-        result = mod_mul(result, next_val, n)
+def mod_mul_from_list(values, n) -> int:
+    result = 1
+    for value in values:
+        result = mod_mul(result, value, n)
     return result
-
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Compute mod exponent")
